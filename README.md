@@ -1,12 +1,12 @@
-# How to draw custom thumb in Flutter Range Slider?
-This repository contains a sample to Create a customized thumb on a [Syncfusion® Range Slider](https://help.syncfusion.com/flutter/range-slider/getting-started) widget.
+# How to update the state of a Flutter chat using Flutter Bloc?
+This repository contains a sample to Update a state of Flutter chat using the Flutter Bloc [Syncfusion® Chat](https://help.syncfusion.com/flutter/chat/getting-started) widget.
 
 Please refer the KB through this link.
 
 ## Syncfusion® controls:
 
 This project used the following Syncfusion® widget(s):
-* [SfRangeSlider](https://help.syncfusion.com/flutter/range-slider/getting-started)
+* [SfChat](https://help.syncfusion.com/flutter/chat/getting-started)
 
 ## Supported platforms
 
