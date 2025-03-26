@@ -11,9 +11,7 @@ class ChatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ChatScreen(),
-    );
+    return const MaterialApp(home: ChatScreen());
   }
 }
 
@@ -34,10 +32,11 @@ class ChatState {
 
 // Chat BLoC to manage state
 class ChatBloc extends Bloc<ChatEvent, ChatState> {
-  ChatBloc() : super(ChatState(messages: [])) {
-    on<SendMessage>((event, emit) {
-      final updatedMessages = List<ChatMessage>.from(state.messages)
-        ..add(event.message);
+  ChatBloc() : super(ChatState(messages: <ChatMessage>[])) {
+    on<SendMessage>((SendMessage event, Emitter<ChatState> emit) {
+      final List<ChatMessage> updatedMessages = List<ChatMessage>.from(
+        state.messages,
+      )..add(event.message);
       emit(ChatState(messages: updatedMessages));
     });
   }
@@ -50,37 +49,36 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ChatBloc(),
+      create: (BuildContext context) => ChatBloc(),
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Chat App'),
-        ),
+        appBar: AppBar(title: const Text('Chat App')),
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
           child: Column(
             children: [
               Expanded(
                 child: BlocBuilder<ChatBloc, ChatState>(
-                  buildWhen: (previous, current) =>
-                      previous.messages != current.messages,
-                  builder: (context, state) {
+                  buildWhen:
+                      (ChatState previous, ChatState current) =>
+                          previous.messages != current.messages,
+                  builder: (BuildContext context, ChatState state) {
                     return SfChat(
                       messages: state.messages,
                       outgoingUser: '123-001',
                       actionButton: ChatActionButton(
                         onPressed: (String newMessage) {
                           context.read<ChatBloc>().add(
-                                SendMessage(
-                                  ChatMessage(
-                                    text: newMessage,
-                                    time: DateTime.now(),
-                                    author: const ChatAuthor(
-                                      id: '123-001',
-                                      name: 'John Doe',
-                                    ),
-                                  ),
+                            SendMessage(
+                              ChatMessage(
+                                text: newMessage,
+                                time: DateTime.now(),
+                                author: const ChatAuthor(
+                                  id: '123-001',
+                                  name: 'John Doe',
                                 ),
-                              );
+                              ),
+                            ),
+                          );
                         },
                       ),
                     );
@@ -94,4 +92,3 @@ class ChatScreen extends StatelessWidget {
     );
   }
 }
-

@@ -1,5 +1,5 @@
-# How to update the state of a Flutter chat using Flutter Bloc?
-This repository contains a sample to Update a state of Flutter chat using the Flutter Bloc [Syncfusion® Chat](https://help.syncfusion.com/flutter/chat/getting-started) widget.
+# How to update the state of a Flutter Chat widget using Flutter Bloc?
+This repository contains a sample to update the state of the [Syncfusion® Flutter Chat](https://help.syncfusion.com/flutter/chat/getting-started) widget using the Flutter Bloc.
 
 Please refer the KB through this link.
 

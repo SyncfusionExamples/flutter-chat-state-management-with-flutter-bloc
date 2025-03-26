@@ -1,5 +1,5 @@
-name: how_to_update_the_state_of_a_flutter_bloc_in_syncfusion_flutter_chat
-description: "A new Flutter project."
+name: state_maintenance_in_flutter_chat_widget_using_flutter_bloc
+description: "This project contains a sample for maintaining the state of the Syncfusion® Flutter Chat widget using Flutter Bloc."
 
 version: 1.0.0+1
 
